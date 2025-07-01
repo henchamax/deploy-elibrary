@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  deploy-elibrary:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-07-01T10:01:41.0712871+03:00"
+    description: A Helm chart for Kubernetes
+    digest: 0b93bc0d61b173b186d5ab0f609430802a163534cd921a21005412251c9bb003
+    name: deploy-elibrary
+    type: application
+    urls:
+    - https://henchamax.github.io/deploy-elibrary/deploy-elibrary-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-07-01T10:01:41.07076+03:00"

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "deploy-elibrary.fullname" . }}
+  labels:
+    {{- include "deploy-elibrary.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      tier: {{ .Values.app.tier }}
+
+  template:
+    metadata:
+      labels:
+        project: {{ .Values.app.project }}
+        tier: {{ .Values.app.tier }}
+    spec:
+      replicas: {{ .Values.deployments.replicas }}
+      containers:
+        name: {{ .Values.deployments.name }}
+        image: "{{ .Values.image.repository}}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.deployments.imagePullPolicy }}
+        ports:
+          containerPort: {{ .Values.deployments.containerPort }}
+
