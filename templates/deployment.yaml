@@ -3,21 +3,20 @@ kind: Deployment
 metadata:
   name: {{ .Release.Name }}-deployment
 spec:
+  replicas: {{.Values.deployments.replicas}}
   selector:
     matchLabels:
-      tier: {{ .Values.app.tier }}
-
+      project: {{.Values.app.project}}
+      tier: {{.Values.app.tier}}
   template:
     metadata:
       labels:
-        project: {{ .Values.app.project }}
-        tier: {{ .Values.app.tier }}
+        project: {{.Values.app.project}}
+        tier: {{.Values.app.tier}}
     spec:
-      replicas: {{ .Values.deployments.replicas }}
       containers:
-        name: {{ .Values.deployments.name }}
-        image: "{{ .Values.image.repository}}:{{ .Values.image.tag }}"
-        imagePullPolicy: {{ .Values.deployments.imagePullPolicy }}
+      - name: {{.Values.deployments.containerName}}
+        image: {{.Values.image.repository}}:{{.Values.image.tag}}
+        imagePullPolicy: {{.Values.deployments.imagePullPolicy}}
         ports:
-          containerPort: {{ .Values.deployments.containerPort }}
-
+        - containerPort: {{.Values.deployments.containerPort}}
