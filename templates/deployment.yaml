@@ -1,9 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "deploy-elibrary.fullname" . }}
-  labels:
-    {{- include "deploy-elibrary.labels" . | nindent 4 }}
+  name: {{ .Release.Name }}-deployment
 spec:
   selector:
     matchLabels:
